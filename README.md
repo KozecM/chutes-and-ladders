@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a rails based version of chutes and ladders for software engineering.
 
-Things you may want to cover:
+Quick list of important thigns:
 
-* Ruby version
+* Ruby version: 2.6.1
 
-* System dependencies
+* Rails version: 5.2.3
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* How to run the test suite: Gotta make it first
