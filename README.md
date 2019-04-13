@@ -3,11 +3,11 @@ Team Members: Bryce Graves and Mackenzie Hatfield
 
 This is a rails based version of chutes and ladders for software engineering.
 
-###SETUP
+### SETUP
 After cloning the project, run ```bundle install``` in order
 to download and include the project's dependencies.
 
-###TESTS
+### TESTS
 The test suite is execute by running the command ```rspec```
 from the command line
 
