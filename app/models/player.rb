@@ -1,32 +1,39 @@
 class Player
-  attr_reader :name
-  attr_reader :space
+  attr_reader :name, :position
 
   def initialize(**options)
     @name = options[:name]
-    @space = options[:space] || 1
+    @position = options[:position] || 1
     
-    validate_space(space)
+    validate_position(position)
   end
 
-  def move_forward(spaces)
-    set_space(space + spaces)
+  def move(roll)
+    new_position = calculate_position(roll)
+
+    if valid_position?(new_position)
+      set_position(new_position)
+    end
   end
 
-  def move_backwards(spaces)
-    set_space(space - spaces)
+  def set_position(board_position)
+    validate_position(board_position)
+    @position = board_position
   end
 
-  def set_space(board_space)
-    validate_space(board_space)
-    @space = board_space
+  def calculate_position(roll)
+    position + roll
   end
 
   private
+
+  def valid_position?(position)
+    (0 < position) and (position < 101)
+  end
   
-  def validate_space(board_space)
-    if board_space > 100 or board_space < 1
-      raise ArgumentError.new("Can't have space greater than 100
+  def validate_position(board_position)
+    if board_position > 100 or board_position < 1
+      raise ArgumentError.new("Can't have position greater than 100
         or less than 1.")
     end
   end
