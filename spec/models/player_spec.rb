@@ -33,13 +33,13 @@ RSpec.describe Player do
   describe "movement" do
     let(:player) { Player.new(name: "Mack", position: 5) }
     
-    it "can move forward by a number of position" do
-      player.move_forward(6)
+    it "can move forward by a number of positions" do
+      player.move(6)
       expect(player.position).to eq(11)
     end
 
-    it "can move backward by a number of position" do
-      player.move_backwards(4)
+    it "can move backward by a number of positions" do
+      player.move(-4)
       expect(player.position).to eq(1)
     end
 
