@@ -12,6 +12,15 @@ RSpec.describe Game do
       expect(game.players[1].name).to eq("Bryce")
     end
 
+    it "generates a board that has 100 spaces" do
+      players = []
+      players << Player.new(name: "Mack")
+      players << Player.new(name: "Bryce")
+      game = Game.new(players)
+
+      expect(game.board.size).to eq(100)
+    end
+
     it "sets the first player as the current turn" do
       players = []
       players << Player.new(name: "Mack")
