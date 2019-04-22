@@ -56,6 +56,41 @@ RSpec.describe Game do
 
       expect(current_name).to eq("Jack")
     end
+
+    it "can roll the die and set a players position" do
+      players = []
+      players << Player.new(name: "Mack")
+      players << Player.new(name: "Bryce")
+      game = Game.new(players)
+
+      game.roll
+      expect(game.currently_rolling.position).not_to eq(1)
+    end
+
+    it "can set the players position if it encounters a ladder" do
+      players = []
+      players << Player.new(name: "Mack")
+      players << Player.new(name: "Bryce")
+      game = Game.new(players)
+
+      game.currently_rolling.set_position(15)
+      game.update_position
+
+      expect(game.currently_rolling.position).to eq(26)
+    end
+
+    it "can set the players position back if it encounters a chute" do
+      players = []
+      players << Player.new(name: "FIRST")
+      players << Player.new(name: "SECOND")
+      game = Game.new(players)
+
+      game.currently_rolling.set_position(49)
+      game.update_position
+
+      expect(game.currently_rolling.position).to eq(11)
+    end
+    
   end
   
 end

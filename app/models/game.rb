@@ -24,4 +24,19 @@ class Game
     end
     initialized_spaces.each { |space| @board << space }
   end
+
+  def roll
+    roll = Dice::roll
+    currently_rolling.move(roll)
+    update_position
+  end
+
+  def update_position
+    current_space = board[currently_rolling.position - 1]
+    if current_space.type != "empty"
+      currently_rolling.set_position(current_space.destination)
+    else
+      return
+    end
+  end
 end

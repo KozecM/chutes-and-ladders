@@ -15,7 +15,7 @@ module Spaces
     {type: "empty", destination: nil}, # 13
     {type: "empty", destination: nil}, # 14
     {type: "ladder", destination: 26}, # 15
-    {type: "snake", destination: 6}, # 16
+    {type: "chute", destination: 6}, # 16
     {type: "empty", destination: nil}, # 17
     {type: "empty", destination: nil}, # 18
     {type: "empty", destination: nil}, # 19
@@ -45,10 +45,10 @@ module Spaces
     {type: "empty", destination: nil}, # 43
     {type: "empty", destination: nil}, # 44
     {type: "empty", destination: nil}, # 45
-    {type: "snake", destination: 25}, # 46
+    {type: "chute", destination: 25}, # 46
     {type: "empty", destination: nil}, # 47
     {type: "empty", destination: nil}, # 48
-    {type: "snake", destination: 11}, # 49
+    {type: "chute", destination: 11}, # 49
     {type: "empty", destination: nil}, # 50
     {type: "ladder", destination: 67}, # 51
     {type: "empty", destination: nil}, # 52
@@ -61,9 +61,9 @@ module Spaces
     {type: "empty", destination: nil}, # 59
     {type: "empty", destination: nil}, # 60
     {type: "empty", destination: nil}, # 61
-    {type: "snake", destination: 19}, # 62
+    {type: "chute", destination: 19}, # 62
     {type: "empty", destination: nil}, # 63
-    {type: "snake", destination: 60}, # 64
+    {type: "chute", destination: 60}, # 64
     {type: "empty", destination: nil}, # 65
     {type: "empty", destination: nil}, # 66
     {type: "empty", destination: nil}, # 67
@@ -73,7 +73,7 @@ module Spaces
     {type: "empty", destination: nil}, # 71
     {type: "empty", destination: nil}, # 72
     {type: "empty", destination: nil}, # 73
-    {type: "snake", destination: 53}, # 74
+    {type: "chute", destination: 53}, # 74
     {type: "empty", destination: nil}, # 75
     {type: "empty", destination: nil}, # 76
     {type: "empty", destination: nil}, # 77
@@ -88,17 +88,17 @@ module Spaces
     {type: "empty", destination: nil}, # 86
     {type: "ladder", destination: 94}, # 87
     {type: "empty", destination: nil}, # 88
-    {type: "snake", destination: 68}, # 89
+    {type: "chute", destination: 68}, # 89
     {type: "empty", destination: nil}, # 90
     {type: "empty", destination: nil}, # 91
-    {type: "snake", destination: 88}, # 92
+    {type: "chute", destination: 88}, # 92
     {type: "empty", destination: nil}, # 93
     {type: "empty", destination: nil}, # 94
-    {type: "snake", destination: 75}, # 95
+    {type: "chute", destination: 75}, # 95
     {type: "empty", destination: nil}, # 96
     {type: "empty", destination: nil}, # 97
     {type: "empty", destination: nil}, # 98
-    {type: "snake", destination: 80}, # 99
+    {type: "chute", destination: 80}, # 99
     {type: "empty", destination: nil}, # 100
   ]
 end
