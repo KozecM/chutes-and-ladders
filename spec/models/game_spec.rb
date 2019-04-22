@@ -63,7 +63,7 @@ RSpec.describe Game do
       players << Player.new(name: "Bryce")
       game = Game.new(players)
 
-      game.roll_for_player
+      game.roll
       expect(game.currently_rolling.position).not_to eq(1)
     end
 
@@ -74,7 +74,7 @@ RSpec.describe Game do
       game = Game.new(players)
 
       game.currently_rolling.set_position(15)
-      game.update_player_position
+      game.update_position
 
       expect(game.currently_rolling.position).to eq(26)
     end
@@ -86,7 +86,7 @@ RSpec.describe Game do
       game = Game.new(players)
 
       game.currently_rolling.set_position(49)
-      game.update_player_position
+      game.update_position
 
       expect(game.currently_rolling.position).to eq(11)
     end
