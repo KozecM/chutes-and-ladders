@@ -1,9 +1,3 @@
-class Space
-  attr_reader :destination, :type
-
-  def initialize(**options)
-    @destination = options[:destination] || nil
-    @type = options[:type] || "empty"
-  end
-
+class Space < ApplicationRecord
+  belongs_to :game
 end

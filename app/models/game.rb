@@ -1,13 +1,15 @@
-class Game
-  attr_reader :players
-  attr_accessor :currently_rolling, :board
+class Game < ApplicationRecord
+  has_many :players
+  has_many :spaces
+  # attr_reader :players
+  # attr_accessor :currently_rolling, :board
 
-  def initialize(players)
-    @players = players
-    @currently_rolling = players[0]
-    @board = []
-    generate_spaces
-  end
+  # def initialize(players)
+  #   @players = players
+  #   @currently_rolling = players[0]
+  #   @board = []
+  #   generate_spaces
+  # end
 
   def change_turn
     current_name = currently_rolling.name

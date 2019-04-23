@@ -1,12 +1,13 @@
-class Player
-  attr_reader :name, :position
+class Player < ApplicationRecord
+  belongs_to :game
+  # attr_reader :name, :position
 
-  def initialize(**options)
-    @name = options[:name]
-    @position = options[:position] || 1
+  # def initialize(**options)
+  #   @name = options[:name]
+  #   @position = options[:position] || 1
     
-    validate_position(position)
-  end
+  #   validate_position(position)
+  # end
 
   def move(roll)
     new_position = calculate_position(roll)
@@ -18,17 +19,17 @@ class Player
 
   def set_position(board_position)
     validate_position(board_position)
-    @position = board_position
+    self.position = board_position
   end
 
   def calculate_position(roll)
-    position + roll
+    self.position + roll
   end
 
   private
 
   def valid_position?(position)
-    (0 < position) and (position < 101)
+    (0 < self.position) and (self.position < 101)
   end
   
   def validate_position(board_position)
