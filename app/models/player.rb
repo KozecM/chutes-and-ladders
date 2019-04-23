@@ -1,13 +1,5 @@
 class Player < ApplicationRecord
-  # attr_reader :name, :position
-
-  # def initialize(**options)
-  #   @name = options[:name]
-  #   @position = options[:position] || 1
-    
-  #   validate_position(position)
-  # end
-
+  
   def move(roll)
     new_position = calculate_position(roll)
 

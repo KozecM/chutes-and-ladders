@@ -1,6 +1,5 @@
 class Game < ApplicationRecord
-  has_many :players
-  has_many :spaces
+
   # attr_reader :players
   # attr_accessor :currently_rolling, :board
 
