@@ -8,10 +8,6 @@ RSpec.describe Player do
       expect(player1.name).to eq("Mack")
     end
 
-    it "has a default position of 1" do
-      expect(player1.position).to eq(1)
-    end
-
     it "can be initialized with a different position value" do
       player2 = Player.new(name: "Jack", position: 5)
       expect(player2.position).to eq(5)
