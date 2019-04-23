@@ -1,5 +1,4 @@
 class Player < ApplicationRecord
-  belongs_to :game
   # attr_reader :name, :position
 
   # def initialize(**options)

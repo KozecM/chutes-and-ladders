@@ -16,18 +16,6 @@ RSpec.describe Player do
       player2 = Player.new(name: "Jack", position: 5)
       expect(player2.position).to eq(5)
     end
-
-    it "can not be initialized with a position greater than 100" do
-      expect{
-        Player.new(name: "gone", position: 101)
-      }.to raise_error(ArgumentError)
-    end
-
-    it "can not be initialized with a position less than 1" do
-      expect {
-        Player.new(name: "bad", position: 0)
-      }.to raise_error(ArgumentError)
-    end
   end
 
   describe "movement" do
