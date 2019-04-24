@@ -2,30 +2,15 @@ require "rails_helper"
 
 RSpec.describe Game do
   describe "initialization" do
+    let(:game) { Game.new(name: "AWESOME!", player_one_name: "James", player_two_name: "John") }
+
     it "creates a game with a name and two player names" do
-      game = Game.new(name: "AWESOME!")
 
       expect(game.name).to eq("AWESOME!")
+      expect(game.player_one_name).to eq("James")
+      expect(game.player_two_name).to eq("John")
     end
 
-  #   it "generates a board that has 100 spaces" do
-  #     players = []
-  #     players << Player.new(name: "Mack")
-  #     players << Player.new(name: "Bryce")
-  #     game = Game.new(players)
-
-  #     expect(game.board.size).to eq(100)
-  #   end
-
-  #   it "sets the first player as the current turn" do
-  #     players = []
-  #     players << Player.new(name: "Mack")
-  #     players << Player.new(name: "Bryce")
-  #     game = Game.new(players)
-
-  #     expect(game.currently_rolling.name).to eq("Mack")
-  #   end
-  # end
 
   # describe "gameplay" do
   #   it "can change whose turn it is" do
@@ -53,15 +38,13 @@ RSpec.describe Game do
   #     expect(current_name).to eq("Jack")
   #   end
 
-  #   it "can roll the die and set a players position" do
-  #     players = []
-  #     players << Player.new(name: "Mack")
-  #     players << Player.new(name: "Bryce")
-  #     game = Game.new(players)
+    it "can roll the die and set a players position" do
+      game.players << Player.new(name: "Mack")
+      game.players << Player.new(name: "Bryce")
 
-  #     game.roll
-  #     expect(game.currently_rolling.position).not_to eq(1)
-  #   end
+      game.roll_for(game.players[0])
+      expect(game.players[0]).not_to eq(1)
+    end
 
   #   it "can set the players position if it encounters a ladder" do
   #     players = []

@@ -26,18 +26,23 @@ class Game < ApplicationRecord
     initialized_spaces.each { |space| @board << space }
   end
 
-  def roll
+  def roll_for(player_name)
     roll = Dice::roll
-    currently_rolling.move(roll)
-    update_position
+    players.each do |player|
+      if player.name == player_name
+        player.move(roll)
+      end
+    end
+    # currently_rolling.move(roll)
+    # update_position
   end
 
-  def update_position
-    current_space = board[currently_rolling.position - 1]
-    if current_space.type != "empty"
-      currently_rolling.set_position(current_space.destination)
-    else
-      return
-    end
-  end
+  # def update_position
+  #   current_space = board[currently_rolling.position - 1]
+  #   if current_space.type != "empty"
+  #     currently_rolling.set_position(current_space.destination)
+  #   else
+  #     return
+  #   end
+  # end
 end

@@ -18,12 +18,6 @@ class GamesController < ApplicationController
       player_two_name: params[:game][:player_two_name]
     )
     @game_workflow.create
-
-    @player_one_workflow = CreatesPlayer.new(name: params[:game][:player_one_name])
-    @player_two_workflow = CreatesPlayer.new(name: params[:game][:player_one_name])
-
-    @player_one_workflow.create
-    @player_two_workflow.create
     
     redirect_to action: 'show', id: @game_workflow.game.id
   end
