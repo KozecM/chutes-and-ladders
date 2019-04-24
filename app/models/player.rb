@@ -9,25 +9,17 @@ class Player < ApplicationRecord
   end
 
   def set_position(board_position)
-    validate_position(board_position)
-    self.position = board_position
+    self.update_attribute(:position, board_position)
   end
 
   def calculate_position(roll)
-    self.position + roll
+    self.read_attribute(:position) + roll
   end
 
   private
 
   def valid_position?(position)
-    (0 < self.position) and (self.position < 101)
-  end
-  
-  def validate_position(board_position)
-    if board_position > 100 or board_position < 1
-      raise ArgumentError.new("Can't have position greater than 100
-        or less than 1.")
-    end
+    (0 < position) and (position < 101)
   end
 
 end

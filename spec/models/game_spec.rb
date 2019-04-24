@@ -39,11 +39,11 @@ RSpec.describe Game do
   #   end
 
     it "can roll the die and set a players position" do
-      game.players << Player.new(name: "Mack")
-      game.players << Player.new(name: "Bryce")
+      game.players << Player.new(name: "Mack", position: 1)
+      game.players << Player.new(name: "Bryce", position: 1)
 
-      game.roll_for(game.players[0])
-      expect(game.players[0]).not_to eq(1)
+      game.roll_for("Mack")
+      expect(game.players[0].read_attribute(:position)).to_not eq(1)
     end
 
   #   it "can set the players position if it encounters a ladder" do
