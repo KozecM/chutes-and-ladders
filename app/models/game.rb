@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
 
-  # attr_reader :players
-  # attr_accessor :currently_rolling, :board
+  has_many :players
+  attr_accessor :currently_rolling, :board
 
   # def initialize(players)
   #   @players = players
