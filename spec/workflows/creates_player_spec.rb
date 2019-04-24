@@ -19,5 +19,4 @@ class CreatesPlayer
     @success = result
   end
 
-
 end
