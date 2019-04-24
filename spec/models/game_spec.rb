@@ -3,10 +3,9 @@ require "rails_helper"
 RSpec.describe Game do
   describe "initialization" do
     it "creates a game with a name and two player names" do
-      game = Game.new(name: "AWESOME!", player_one_name: "Mack", player_two_name: "Bryce")
+      game = Game.new(name: "AWESOME!")
 
-      expect(game.players[0].name).to eq("Mack")
-      expect(game.players[1].name).to eq("Bryce")
+      expect(game.name).to eq("AWESOME!")
     end
 
   #   it "generates a board that has 100 spaces" do
