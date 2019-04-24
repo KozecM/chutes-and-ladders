@@ -5,9 +5,8 @@ RSpec.describe "starting a new game", type: :system do
     visit new_game_path
     fill_in "Name", with: "World Championships 2019"
     fill_in "player_one_name", with: "Mack"
-    fill_in :player_two_name, with: "Bryce"
+    fill_in "player_two_name", with: "Bryce"
     click_on("Create Game")
-    visit game_path
-    expect(page).to have_content("World Champtionships 2019")
+    expect(page).to have_content("World Championships 2019")
   end
 end
