@@ -9,7 +9,7 @@ class CreatesGame
   def build
     self.game = Game.new(name: name, player_one_name: player_one_name, player_two_name: player_two_name)
     game.players = generate_players
-    game.spaces = generate_spaces  
+    game.spaces = GamesHelper::generate_spaces 
     game
   end
 
@@ -26,14 +26,6 @@ class CreatesGame
       game_players << Player.new(name: p_name)
     end
     game_players
-  end
-
-  def generate_spaces
-    game_spaces = []
-    GamesHelper::SPACESDATA.each do |config|
-      game_spaces << Space.new(config)
-    end
-    game_spaces
   end
 
 end

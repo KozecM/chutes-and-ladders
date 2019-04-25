@@ -101,4 +101,13 @@ module GamesHelper
     {space_type: "chute", destination: 80}, # 99
     {space_type: "empty", destination: nil}, # 100
   ]
+
+  def self.generate_spaces
+    spaces = []
+    SPACESDATA.each do |config|
+      spaces << Space.new(config)
+    end
+    spaces
+  end
+  
 end
