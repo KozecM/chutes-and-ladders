@@ -19,13 +19,13 @@ class Game < ApplicationRecord
     @currently_rolling = players[player_index % players.size]
   end
 
-  def generate_spaces
-    initialized_spaces = []
-    Spaces::SPACESDATA.each do |data|
-      initialized_spaces << Space.new(data)
-    end
-    initialized_spaces.each { |space| @board << space }
-  end
+  # def generate_spaces
+  #   initialized_spaces = []
+  #   Spaces::SPACESDATA.each do |data|
+  #     initialized_spaces << Space.new(data)
+  #   end
+  #   initialized_spaces.each { |space| @board << space }
+  # end
 
   def roll_for(player_name)
     roll = Dice::roll
