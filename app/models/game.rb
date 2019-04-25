@@ -21,7 +21,6 @@ class Game < ApplicationRecord
     end
   end
 
-
   def update_position_for(player_name)
     players.each do |player|
       if player.name == player_name
