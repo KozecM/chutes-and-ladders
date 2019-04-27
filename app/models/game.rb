@@ -1,14 +1,8 @@
 class Game < ApplicationRecord
 
-  # attr_reader :players
-  # attr_accessor :currently_rolling, :board
-
-  # def initialize(players)
-  #   @players = players
-  #   @currently_rolling = players[0]
-  #   @board = []
-  #   generate_spaces
-  # end
+  has_many :players
+  has_many :spaces
+  attr_accessor :currently_rolling, :board
 
   def change_turn
     current_name = currently_rolling.name
@@ -18,26 +12,25 @@ class Game < ApplicationRecord
     @currently_rolling = players[player_index % players.size]
   end
 
-  def generate_spaces
-    initialized_spaces = []
-    Spaces::SPACESDATA.each do |data|
-      initialized_spaces << Space.new(data)
-    end
-    initialized_spaces.each { |space| @board << space }
-  end
-
-  def roll
+  def roll_for(player_name)
     roll = Dice::roll
-    currently_rolling.move(roll)
-    update_position
-  end
-
-  def update_position
-    current_space = board[currently_rolling.position - 1]
-    if current_space.type != "empty"
-      currently_rolling.set_position(current_space.destination)
-    else
-      return
+    players.each do |player|
+      if player.name == player_name
+        player.move(roll)
+      end
     end
   end
+
+  def update_position_for(player_name)
+    players.each do |player|
+      if player.name == player_name
+        current_position = player.read_attribute(:position)
+        space = spaces[current_position - 1]
+        if space.destination
+          player.set_position(space.destination)
+        end
+      end
+    end
+  end
+
 end

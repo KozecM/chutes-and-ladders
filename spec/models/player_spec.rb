@@ -31,13 +31,6 @@ RSpec.describe Player do
       player.set_position(50)
       expect(player.position).to eq(50)
     end
-
-    it "cannot be set to a position greater than 100" do
-      expect { player.set_position(110) }.to raise_error(ArgumentError)
-    end
-
-    it "cannot be set to a position less than 1" do
-      expect { player.set_position(0) }.to raise_error(ArgumentError)
-    end
   end
+  
 end
