@@ -23,7 +23,7 @@ class CreatesGame
     player_names = [player_one_name, player_two_name]
 
     player_names.each do |p_name|
-      game_players << Player.new(name: p_name)
+      game_players << Player.new(name: p_name, position: 1)
     end
     game_players
   end

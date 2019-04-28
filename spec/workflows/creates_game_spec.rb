@@ -20,5 +20,13 @@ RSpec.describe CreatesGame do
       expect(creator.game.spaces.size).to eq(100)
     end
   end
+
+  describe "not being created" do
+    it "fails when a name isn't supplied" do
+      bad_creator = CreatesGame.new(name: "", player_one_name: "won't", player_two_name: "be playing")
+      bad_creator.create
+      expect(bad_creator.game.errors.messages[:name][0]).to match("can't be blank")
+    end
+  end
   
 end
