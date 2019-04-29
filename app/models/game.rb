@@ -4,6 +4,8 @@ class Game < ApplicationRecord
   has_many :spaces
   attr_accessor :currently_rolling, :board
 
+  validates :name, presence: true, allow_blank: false
+
   def change_turn
     current_name = currently_rolling.name
     player_names = players.collect {|player| player.name }

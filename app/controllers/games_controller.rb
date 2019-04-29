@@ -18,8 +18,14 @@ class GamesController < ApplicationController
       player_two_name: params[:game][:player_two_name]
     )
     @game_workflow.create
-    
-    redirect_to action: 'show', id: @game_workflow.game.id
+
+    if @game_workflow.game.errors.any?
+      @game = @game_workflow.game
+      render :new
+    else
+      redirect_to action: 'show', id: @game_workflow.game.id
+    end
+      
   end
 
 end

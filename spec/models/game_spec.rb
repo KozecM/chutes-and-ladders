@@ -5,7 +5,6 @@ RSpec.describe Game do
   describe "initialization" do
     
     it "creates a game with a name and two player names" do
-
       expect(game.name).to eq("AWESOME!")
       expect(game.player_one_name).to eq("James")
       expect(game.player_two_name).to eq("John")
@@ -31,6 +30,7 @@ RSpec.describe Game do
       game.update_position_for("Bryce")
       expect(game.players[1].position).to eq(26)
     end
+
   end
   
 end

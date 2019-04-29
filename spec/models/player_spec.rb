@@ -32,5 +32,5 @@ RSpec.describe Player do
       expect(player.position).to eq(50)
     end
   end
-  
+
 end

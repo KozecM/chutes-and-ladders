@@ -10,3 +10,15 @@
   </br>
   <%= g.submit %>
 <% end %>
+
+<%if @game.errors.any? %>
+  <div id="errors">
+    <h3>Game not created because:</h3>
+    <ul>
+      <% @game.errors.messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <h4>Please try again</h4>
+<% end %>
