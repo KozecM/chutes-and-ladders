@@ -10,7 +10,7 @@ RSpec.describe Player do
 
     it "can be initialized with a different position value" do
       player2 = Player.new(name: "Jack", position: 5)
-      expect(player2.position).to eq(5)
+      expect(player2).to have_position(5)
     end
   end
 
@@ -19,17 +19,17 @@ RSpec.describe Player do
     
     it "can move forward by a number of positions" do
       player.move(6)
-      expect(player.position).to eq(11)
+      expect(player).to have_position(11)
     end
 
     it "can move backward by a number of positions" do
       player.move(-4)
-      expect(player.position).to eq(1)
+      expect(player).to have_position(1)
     end
 
     it "can be sent to a specific position" do
       player.set_position(50)
-      expect(player.position).to eq(50)
+      expect(player).to have_position(50)
     end
   end
   
