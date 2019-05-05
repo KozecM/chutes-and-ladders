@@ -1,6 +1,6 @@
 RSpec::Matchers.define :have_name do |expected|
   match do |actual|
-    actual.name
+    actual.name == expected
   end
 
   description do
