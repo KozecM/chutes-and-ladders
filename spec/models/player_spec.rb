@@ -5,7 +5,7 @@ RSpec.describe Player do
     let(:player1) { Player.new(name: "Mack") }
 
     it "creates a player with the players name" do
-      expect(player1.name).to eq("Mack")
+      expect(player1).to have_name("Mack")
     end
 
     it "can be initialized with a different position value" do
