@@ -19,6 +19,11 @@ RSpec.describe CreatesGame do
       creator.build
       expect(creator.game.spaces.size).to eq(100)
     end
+
+    it "sets the first player as the one currenlty rolling" do
+      creator.build
+      expect(creator.game.currently_rolling).to have_name("Player1")
+    end
   end
 
   describe "not being created" do

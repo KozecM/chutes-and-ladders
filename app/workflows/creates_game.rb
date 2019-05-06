@@ -9,7 +9,8 @@ class CreatesGame
   def build
     self.game = Game.new(name: name, player_one_name: player_one_name, player_two_name: player_two_name)
     game.players = generate_players
-    game.spaces = GamesHelper::generate_spaces 
+    game.spaces = GamesHelper::generate_spaces
+    game.currently_rolling = game.players[0] 
     game
   end
 
