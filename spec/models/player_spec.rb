@@ -32,11 +32,18 @@ RSpec.describe Player do
       expect(player).to have_position(50)
     end
 
-    it "only sets the player if it is valid" do
+    it "won't move the player above a space of 100" do
       player.set_position(90)
       expect(player).to have_position(90)
       player.move(11)
       expect(player).not_to have_position(101)
+    end
+
+    it "won't set the position below a space of 1" do
+      player.set_position(1)
+      expect(player).to have_position(1)
+      player.move(-5)
+      expect(player).not_to have_position(-4)
     end
   end
 
