@@ -15,4 +15,3 @@ RSpec::Matchers.define :have_position do |expected|
     "expected player #{actual.name} not to have position #{expected}, but it did"
   end
 end
- 
