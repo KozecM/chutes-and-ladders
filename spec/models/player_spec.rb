@@ -31,6 +31,13 @@ RSpec.describe Player do
       player.set_position(50)
       expect(player).to have_position(50)
     end
+
+    it "only sets the player if it is valid" do
+      player.set_position(90)
+      expect(player).to have_position(90)
+      player.move(11)
+      expect(player).not_to have_position(101)
+    end
   end
   
 end
