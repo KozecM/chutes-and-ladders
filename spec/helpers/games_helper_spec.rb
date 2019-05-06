@@ -1,15 +1,17 @@
-require 'rails_helper'
+require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the GamesHelper. For example:
-#
-# describe GamesHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-RSpec.describe GamesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe GamesHelper do
+  describe "initialization" do
+    let(:board) { GamesHelper.generate_spaces }
+
+    it "Game helper creates board of size 100" do
+      expect(board.size).to eq(100)
+    end
+
+    it "Spaces of the board are accessable" do
+      expect(board.size).to eq(100)
+    end
+
+  end
+  
 end
