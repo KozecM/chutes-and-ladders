@@ -14,4 +14,5 @@ RSpec::Matchers.define :have_position do |expected|
   failure_message_when_negated do |actual|
     "expected player #{actual.name} not to have position #{expected}, but it did"
   end
-end 
+end
+ 
