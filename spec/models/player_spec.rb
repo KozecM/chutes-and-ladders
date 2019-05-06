@@ -39,5 +39,5 @@ RSpec.describe Player do
       expect(player).not_to have_position(101)
     end
   end
-  
+
 end

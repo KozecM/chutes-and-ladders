@@ -1,5 +1,4 @@
 class Player < ApplicationRecord
-  
   def move(roll)
     new_position = calculate_position(roll)
 
