@@ -9,6 +9,7 @@ RSpec.describe Game do
       expect(game.player_one_name).to eq("James")
       expect(game.player_two_name).to eq("John")
     end
+
   end
 
   describe "gameplay" do
@@ -29,6 +30,31 @@ RSpec.describe Game do
       game.players[1].set_position(15)
       game.update_position_for("Bryce")
       expect(game.players[1].position).to eq(26)
+    end
+
+    it "can change whose turn it is to roll" do
+      game.players << Player.new(name: "Jocelyn", position: 1)
+      game.players << Player.new(name: "Shannon", position: 1)
+      first_player = game.players[0]
+      game.currently_rolling = first_player
+      expect(game.currently_rolling).to have_name("Jocelyn")
+      game.change_turn
+      expect(game.currently_rolling).to have_name("Shannon")
+    end
+
+    it "can switch to the correct player" do
+      game.players << Player.new(name: "Abe", position: 1)
+      game.players << Player.new(name: "Byron", position: 1)
+      game.players << Player.new(name: "Cassie", position: 1)
+      game.players << Player.new(name: "Darius", position: 1)
+
+      game.currently_rolling = game.players[0]
+      game.change_turn
+      game.change_turn
+      game.change_turn
+      game.change_turn
+
+      expect(game.currently_rolling).to have_name("Abe")
     end
 
   end
