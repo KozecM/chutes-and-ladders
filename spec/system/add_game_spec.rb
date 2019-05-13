@@ -4,8 +4,6 @@ RSpec.describe "starting a new game", type: :system do
   it "allows a user to create and start a new game" do
     visit new_game_path
     fill_in "Name", with: "World Championships 2019"
-    fill_in "player_one_name", with: "Mack"
-    fill_in "player_two_name", with: "Bryce"
     click_on("Create Game")
     expect(page).to have_content("World Championships 2019")
   end
@@ -13,8 +11,6 @@ RSpec.describe "starting a new game", type: :system do
   it "won't without a name for the game" do
     visit new_game_path
     fill_in "Name", with: ""
-    fill_in "player_one_name", with: "Mack"
-    fill_in "player_one_name", with: "Bryce"
     click_on("Create Game")
     expect(page).to have_content("can't be blank")
   end

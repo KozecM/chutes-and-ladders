@@ -14,8 +14,6 @@ ActiveRecord::Schema.define(version: 2019_04_24_185000) do
 
   create_table "games", force: :cascade do |t|
     t.string "name"
-    t.string "player_one_name"
-    t.string "player_two_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,16 +1,13 @@
 class CreatesGame
-  attr_accessor :name, :player_one_name, :player_two_name, :game
-  def initialize(name: "", player_one_name: "", player_two_name: "")
+  attr_accessor :name, :game
+  def initialize(name: "")
     @name = name
-    @player_one_name = player_one_name
-    @player_two_name = player_two_name
   end
 
   def build
-    self.game = Game.new(name: name, player_one_name: player_one_name, player_two_name: player_two_name)
-    game.players = generate_players
+    self.game = Game.new(name: name)
+    game.players = []
     game.spaces = GamesHelper::generate_spaces
-    game.currently_rolling = game.players[0] 
     game
   end
 
@@ -19,14 +16,14 @@ class CreatesGame
     result = game.save
   end
 
-  def generate_players
-    game_players = []
-    player_names = [player_one_name, player_two_name]
+  # def generate_players
+  #   game_players = []
+  #   player_names = [player_one_name, player_two_name]
 
-    player_names.each do |p_name|
-      game_players << Player.new(name: p_name, position: 1)
-    end
-    game_players
-  end
+  #   player_names.each do |p_name|
+  #     game_players << Player.new(name: p_name, position: 1)
+  #   end
+  #   game_players
+  # end
 
 end
