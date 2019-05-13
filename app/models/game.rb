@@ -3,7 +3,6 @@ class Game < ApplicationRecord
   has_many :players
   has_many :spaces
   validates :name, presence: true, allow_blank: false
-  attr_accessor :board
 
   def roll(players)
     current_player = get_current_player
