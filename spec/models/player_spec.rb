@@ -16,14 +16,14 @@ RSpec.describe Player do
     it "isn't a valid player if its name is blank" do
       bad_player = Player.new(name: "", position: 5)
       expect(bad_player).not_to be_valid
-      expect(bad_player.errors[:name]).to eq(["can't be blank"])
+      expect(bad_player.errors[:name]).to eq(["can't be blank", "is too short (minimum is 2 characters)"])
     end
 
     it "isn't a valid player if the name is nil" do
       nil_player = Player.new
       expect(nil_player).to have_name(nil)
       expect(nil_player).not_to be_valid
-      expect(nil_player.errors[:name]).to eq(["can't be blank"])
+      expect(nil_player.errors[:name]).to eq(["can't be blank", "is too short (minimum is 2 characters)"])
     end
   end
 

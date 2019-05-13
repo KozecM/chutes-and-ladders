@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Space do
+  let(:board) { Board.new }
   describe "initialize empty space" do
-    let(:space) { Space.new(space_type: "empty") }
+    let(:space) { board[0] }
 
     it "creates a space of type empty" do
       expect(space.space_type).to eq("empty")

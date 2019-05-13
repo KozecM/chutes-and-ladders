@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  validates :name, presence: true, allow_blank: false
+  validates :name, presence: true, length: { minimum: 2 }
 
   def move(roll)
     new_position = calculate_position(roll)
