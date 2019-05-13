@@ -1,5 +1,7 @@
 class Player < ApplicationRecord
+  belongs_to :game, class_name: "game", foreign_key: "game_id"
   validates :name, presence: true, length: { minimum: 2 }
+  validates :position, presence: true, numericality: { only_integer: true }
 
   def move(roll)
     new_position = calculate_position(roll)

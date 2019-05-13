@@ -14,8 +14,7 @@ class GamesController < ApplicationController
   def create
     @game_workflow = CreatesGame.new(
       name: params[:game][:name],
-      player_one_name: params[:game][:player_one_name],
-      player_two_name: params[:game][:player_two_name]
+      players: params[:game][:players]
     )
     @game_workflow.create
 

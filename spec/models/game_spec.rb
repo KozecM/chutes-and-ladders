@@ -1,23 +1,20 @@
 require "rails_helper"
 
 RSpec.describe Game do
-  let(:game) { Game.new(name: "AWESOME!", player_one_name: "James", player_two_name: "John") }
+  let(:game) { Game.new(name: "FAKE") }
   describe "initialization" do
     
-    it "creates a game with a name and two player names" do
-      expect(game.name).to eq("AWESOME!")
-      expect(game.player_one_name).to eq("James")
-      expect(game.player_two_name).to eq("John")
+    it "creates a game with a name" do
+      expect(game.name).to eq("FAKE")
     end
 
   end
 
   describe "gameplay" do
     it "can roll the die and set a players position" do
-      game.players << Player.new(name: "Mack", position: 1)
-      game.players << Player.new(name: "Bryce", position: 1)
-
-      game.roll_for("Mack")
+      game.players << Player.new(name: "FAKE PLAYER ONE")
+      game.players << Player.new(name: "FAKE PLAYER TWO")
+      game.roll_for("FAKE PLAYER ONE")
       expect(game.players[0].read_attribute(:position)).to_not eq(1)
     end
 

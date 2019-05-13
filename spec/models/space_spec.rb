@@ -1,12 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Space do
-  let(:board) { Board.new }
   describe "initialize empty space" do
-    let(:space) { board[0] }
+    let(:space) { Space.new() }
 
     it "creates a space of type empty" do
-      expect(space.space_type).to eq("empty")
+      expect(space.type).to eq("empty")
     end
 
     it "destination of empty space is nil" do
@@ -15,10 +14,10 @@ RSpec.describe Space do
   end
 
   describe "initialize chute space" do
-    let(:space) { Space.new(space_type: "chute", destination: 1) }
+    let(:space) { Space.new(type: "chute", destination: 1) }
 
     it "creates a space of type chute" do
-      expect(space.space_type).to eq("chute")
+      expect(space.type).to eq("chute")
     end
 
     it "destination of chute space is 1" do
@@ -27,10 +26,10 @@ RSpec.describe Space do
   end
 
   describe "initialize ladder space" do
-    let(:space) { Space.new(space_type: "ladder", destination: 90) }
+    let(:space) { Space.new(type: "ladder", destination: 90) }
 
     it "creates a space of type ladder" do
-      expect(space.space_type).to eq("ladder")
+      expect(space.type).to eq("ladder")
     end
 
     it "destination of ladder space is 90" do

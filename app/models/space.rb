@@ -1,5 +1,9 @@
-class Space < ApplicationRecord
-  belongs_to :board
-  validates :space_type, presence: true
-  validates :destination, allow_nil:true, numericality: { only_integer: true }
+class Space
+  attr_reader :destination, :type
+
+  def initialize(**options)
+    @destination = options[:destination] || nil
+    @type = options[:type] || "empty"
+  end
+
 end

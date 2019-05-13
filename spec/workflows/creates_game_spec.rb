@@ -2,22 +2,19 @@ require "rails_helper"
 
 RSpec.describe CreatesGame do
   describe "initialization" do
-    let(:creator) { CreatesGame.new(name: "GOOD GAME", player_one_name: "Player1",
-      player_two_name: "Player2") }
+    let(:creator) { CreatesGame.new(name: "FAKE") }
 
     it "creates a game given a name and the names of the two players" do
       creator.build
-      expect(creator.game.name).to eq("GOOD GAME")
+      expect(creator.name).to eq("FAKE")
     end
 
-    it "generates two players that are part of the game" do
-      creator.build
-      expect(creator.game.players.size).to eq(2)
-    end
-
-    it "generates 100 spaces" do
-      creator.build
-      expect(creator.game.spaces.size).to eq(100)
+    it "players are able to be added to players array" do
+      creator.create
+      byebug
+      creator.players << Player.new(name: "FAKE PLAYER ONE")
+      creator.players << Player.new(name: "FAKE PLAYER TWO")
+      expect(creator.players.count).to eq(2)
     end
 
     it "sets the first player as the one currenlty rolling" do
