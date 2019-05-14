@@ -2,36 +2,28 @@ class Game < ApplicationRecord
 
   has_many :players
   has_many :spaces
-  attr_accessor :currently_rolling, :board
-
   validates :name, presence: true, allow_blank: false
 
-  def change_turn
-    current_name = currently_rolling.name
-    player_names = players.collect {|player| player.name }
-    player_index = player_names.find_index(current_name)
-    player_index += 1
-    @currently_rolling = players[player_index % players.size]
+  def roll(players)
+    current_player = get_current_player
+    current_player.move(Dice::roll)
+    update_position_for(current_player)
+    change_turn(players)
   end
 
-  def roll_for(player_name)
-    roll = Dice::roll
-    players.each do |player|
-      if player.name == player_name
-        player.move(roll)
-      end
-    end
+  def change_turn(players)    
+    players = players.rotate
   end
 
-  def update_position_for(player_name)
-    players.each do |player|
-      if player.name == player_name
-        current_position = player.read_attribute(:position)
-        space = spaces[current_position - 1]
-        if space.destination
-          player.set_position(space.destination)
-        end
-      end
+  def get_current_player
+    players.first
+  end
+
+  def update_position_for(current_player)
+    space = spaces[current_player.read_attribute(:position) - 1]
+
+    if space.destination
+      current_player.position = space.destination
     end
   end
 
