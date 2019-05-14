@@ -1,19 +1,15 @@
 require "rails_helper"
 
 RSpec.describe Player do
-  let(:player1) { FactoryBot.build_stubbed(:mack) }
-  let(:moves_around) { FactoryBot.create(:mack, position: 5) }
+  let(:player1) { FactoryBot.build_stubbed(:player) }
+  let(:moves_around) { FactoryBot.create(:player, position: 5) }
   let(:starts_at_fifth) { FactoryBot.build_stubbed(:starts_at_fifth_position) }
   let(:bad_player) { FactoryBot.build_stubbed(:bad_player) }
   let(:nil_player) { FactoryBot.build_stubbed(:nil_player) }
 
   describe "initialization" do
     it "creates a player with the players name" do
-      expect(player1).to have_name("Mack")
-    end
-
-    it "can be initialized with a different position value" do
-      expect(:starts_at_fifth).to have_position(5)
+      expect(player1).to have_name("FAKE PLAYER")
     end
 
     it "isn't a valid player if its name is blank" do

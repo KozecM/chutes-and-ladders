@@ -10,6 +10,7 @@ class CreatesPlayer
 
   def build
     self.player = Player.new(name: name)
+    player.position = position
     player
   end
 
