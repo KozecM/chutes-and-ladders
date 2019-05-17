@@ -24,4 +24,9 @@ class Player < ApplicationRecord
     (0 < position) and (position < 101)
   end
 
+  def perform(big_dependency)
+    big_dependency.execute
+    return "we done"
+  end
+
 end
