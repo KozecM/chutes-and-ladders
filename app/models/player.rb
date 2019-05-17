@@ -18,15 +18,15 @@ class Player < ApplicationRecord
     self.read_attribute(:position) + roll
   end
 
+  def perform(big_dependency)
+    big_dependency.execute
+    return "we done"
+  end
+
   private
 
   def valid_position?(position)
     (0 < position) and (position < 101)
-  end
-
-  def perform(big_dependency)
-    big_dependency.execute
-    return "we done"
   end
 
 end

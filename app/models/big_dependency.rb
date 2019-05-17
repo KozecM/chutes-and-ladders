@@ -3,3 +3,9 @@ class BigDependency
     sleep(5)
   end
 end
+
+class FakeBigDependency
+  def execute
+    'finished'
+  end
+end

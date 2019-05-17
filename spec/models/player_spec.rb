@@ -55,4 +55,17 @@ RSpec.describe Player do
     end
   end
 
+  describe "using the big dependency" do
+    # This takes a super long time :(
+    # it "returns a message that says 'we done'" do
+    #   big_guy = BigDependency.new
+    #   expect(player1.perform(big_guy)).to eq('we done')
+    # end
+
+    it "returns a message that says 'we done'" do
+      big_guy = BigDependency.new
+      expect(player1.perform(big_guy)).to eq('we done')
+    end
+  end
+
 end
