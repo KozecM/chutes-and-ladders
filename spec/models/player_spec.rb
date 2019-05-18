@@ -62,7 +62,7 @@ RSpec.describe Player do
       #   expect(player1.perform(big_guy)).to eq('we done')
       # end
 
-    it "returns a message that says 'we done'" do
+    it "returns a message that says 'we done' using a fake" do
       class FakeBigDependency
         def execute
           'ZZzzzzzzzzzzz.....finished sleeping!'
