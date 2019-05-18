@@ -74,8 +74,14 @@ RSpec.describe Player do
       expect(player1.perform(fake_big_guy)).to eq('we done')
     end
 
-    it "also returns a message that says 'we done' using a stub" do
+    it "returns a message that says 'we done' using a stub" do
+      big_dependency = BigDependency.new
+      allow(big_dependency).to receive(:execute).and_return("i'm tired")
+      expect(player1.perform(big_dependency)).to eq('we done')
+    end
 
+    it "returns a message that says 'we done' using a mock" do
+      
     end
 
   end
