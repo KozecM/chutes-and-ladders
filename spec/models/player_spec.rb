@@ -62,7 +62,6 @@ RSpec.describe Player do
       #   expect(player1.perform(big_guy)).to eq('we done')
       # end
 
-    # This uses a FakeBigDependency that responds to the same methods
     it "returns a message that says 'we done'" do
       class FakeBigDependency
         def execute
@@ -81,9 +80,10 @@ RSpec.describe Player do
     end
 
     it "returns a message that says 'we done' using a mock" do
-      
+      mock_big_dependency = double(BigDependency)
+      expect(mock_big_dependency).to receive(:execute).once
+      expect(player1.perform(mock_big_dependency)).to eq('we done')
     end
-
   end
 
 end
