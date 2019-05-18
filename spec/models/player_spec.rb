@@ -57,15 +57,27 @@ RSpec.describe Player do
 
   describe "using the big dependency" do
     # This takes a super long time :(
-    # it "returns a message that says 'we done'" do
-    #   big_guy = BigDependency.new
-    #   expect(player1.perform(big_guy)).to eq('we done')
-    # end
+      # it "returns a message that says 'we done'" do
+      #   big_guy = BigDependency.new
+      #   expect(player1.perform(big_guy)).to eq('we done')
+      # end
 
+    # This uses a FakeBigDependency that responds to the same methods
     it "returns a message that says 'we done'" do
-      big_guy = BigDependency.new
-      expect(player1.perform(big_guy)).to eq('we done')
+      class FakeBigDependency
+        def execute
+          'ZZzzzzzzzzzzz.....finished sleeping!'
+        end
+      end
+
+      fake_big_guy = FakeBigDependency.new
+      expect(player1.perform(fake_big_guy)).to eq('we done')
     end
+
+    it "also returns a message that says 'we done' using a stub" do
+
+    end
+
   end
 
 end
