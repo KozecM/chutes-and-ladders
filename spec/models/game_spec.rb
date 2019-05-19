@@ -33,10 +33,10 @@ RSpec.describe Game do
   end
 
   describe "Using a big dependency" do
-    it "dependency returns 'Game over man! Game over.'" do
-      big_boi = BigDependency.new
-      expect(game.perform(big_boi)).to eq("Game over man! Game over.")
-    end
+    # it "dependency returns 'Game over man! Game over.'" do
+    #   big_boi = BigDependency.new
+    #   expect(game.perform(big_boi)).to eq("Game over man! Game over.")
+    # end
     
   end
   
