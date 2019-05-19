@@ -31,5 +31,13 @@ RSpec.describe Game do
       expect(game.get_current_player.position).to eq(26)
     end
   end
+
+  describe "Using a big dependency" do
+    it "dependency returns 'Game over man! Game over.'" do
+      big_boi = BigDependency.new
+      expect(game.perform(big_boi)).to eq("Game over man! Game over.")
+    end
+    
+  end
   
 end
