@@ -47,7 +47,8 @@ RSpec.describe Game do
     it "with a stub" do
       big_guy = BigDependency.new
 
-      allow(big_guy).to receive(:execute).and_return("i'm tired")
+      allow(big_guy).to receive(:execute).and_return('Zzzzzz')
+      expect(big_guy.execute).to eq('Zzzzzz') 
 
       expect(game.perform(big_guy)).to eq('Game over man! Game over.')
     end
