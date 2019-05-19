@@ -37,6 +37,36 @@ RSpec.describe Game do
     #   big_boi = BigDependency.new
     #   expect(game.perform(big_boi)).to eq("Game over man! Game over.")
     # end
+
+    it "with a fake" do
+      fake_big_guy = FakeBigDependency.new
+
+      expect(game.perform(fake_big_guy)).to eq('Game over man! Game over.')
+    end
+
+    it "with a stub" do
+      big_guy = BigDependency.new
+
+      allow(big_guy).to receive(:execute).and_return("i'm tired")
+
+      expect(game.perform(big_guy)).to eq('Game over man! Game over.')
+    end
+
+    it "with a mock using only a double" do
+      mock_big_guy = instance_double(BigDependency)
+
+      expect(mock_big_guy).to receive(:execute).once
+
+      expect(game.perform(mock_big_guy)).to eq('Game over man! Game over.')
+    end
+
+    it "with a mock using an instance double" do
+      mock_big_guy = instance_double(BigDependency)
+
+      expect(mock_big_guy).to receive(:execute).once
+
+      expect(game.perform(mock_big_guy)).to eq('Game over man! Game over.')
+    end
     
   end
   
