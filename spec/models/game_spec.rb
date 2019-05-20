@@ -1,14 +1,26 @@
 require "rails_helper"
 
 RSpec.describe Game do
+  #TODO: Add factory for valid and invalid game
   let(:game) { Game.new(name: "FAKE GAME!") }
 
-  describe "initialization" do
-    
-    it "creates a game with a name and two player names" do
+  describe "Initialized Games are valid with name" do
+    it "Creates a game with a name" do
       expect(game.name).to eq("FAKE GAME!")
     end
+  end
 
+  describe "Game validation" do
+    it "Created game is valid" do
+      expect(game).to be_valid
+    end
+
+    it "A game without a name is invalid" do
+      game.name = ""
+
+      expect(game).not_to be_valid
+      expect(game.errors[:name]).to eq(["can't be blank"])
+    end
   end
 
   describe "gameplay" do

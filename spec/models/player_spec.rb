@@ -9,15 +9,15 @@ RSpec.describe Player do
 
   describe "Initialized players are valid" do
     it "Players are initialized with a valid name" do
-      expect(valid_player).to be_valid
-
       expect(valid_player).to have_name("FAKE PLAYER")
+
+      expect(valid_player).to be_valid
     end
 
     it "Players are initialized with a valid positiong of one" do
-      expect(valid_player).to be_valid
-
       expect(valid_player).to have_position(1)
+
+      expect(valid_player).to be_valid
     end
   end
 
@@ -37,9 +37,6 @@ RSpec.describe Player do
     end
 
     it "Invalid if a player has a position that isn't an integer" do
-      expect(valid_player).to have_position(1)
-      expect(nil_player).not_to be_valid
-
       valid_player.position = 0.5
 
       expect(valid_player).not_to be_valid
