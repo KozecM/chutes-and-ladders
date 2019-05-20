@@ -1,14 +1,13 @@
 require "rails_helper"
 
 RSpec.describe Game do
-  #TODO: Add factory for valid and invalid game
   let(:valid_game) { FactoryBot.build_stubbed(:game) }
   let(:nameless_game) { FactoryBot.build_stubbed(:nameless_game) }
   let(:nil_game) { FactoryBot.build_stubbed(:nil_game) }
 
   describe "Initialized Games are valid with name" do
     it "Creates a game with a name" do
-      expect(valid_game.name).to have_name("FAKE PLAYER")
+      expect(valid_game).to have_name("FAKE GAME")
     end
   end
 
