@@ -1,14 +1,17 @@
 FactoryBot.define do
   factory :player, class: Player do
     name { "FAKE PLAYER" }
+    position { 1 }
   end
 
-  factory :bad_player, class: Player do
+  factory :unnamed_player, class: Player do
     name { "" }
+    position { 1 }
   end
 
   factory :nil_player, class: Player do
     name { nil }
+    position { nil }
   end
 
 end

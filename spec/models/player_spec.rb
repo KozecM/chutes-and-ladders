@@ -1,28 +1,52 @@
 require "rails_helper"
 
 RSpec.describe Player do
-  let(:player1) { FactoryBot.build_stubbed(:player) }
+  let(:valid_player) { FactoryBot.build_stubbed(:player) }
+  let(:unnamed_player) { FactoryBot.build_stubbed(:unnamed_player) }
+  let(:nil_player) { FactoryBot.build_stubbed(:nil_player) }
   let(:moves_around) { FactoryBot.create(:player, position: 5) }
   let(:starts_at_fifth) { FactoryBot.build_stubbed(:starts_at_fifth_position) }
-  let(:bad_player) { FactoryBot.build_stubbed(:bad_player) }
-  let(:nil_player) { FactoryBot.build_stubbed(:nil_player) }
 
-  describe "initialization" do
-    it "creates a player with the players name" do
-      expect(player1).to have_name("FAKE PLAYER")
+  describe "Initialized players are valid" do
+    it "Players are initialized with a valid name" do
+      expect(valid_player).to be_valid
+
+      expect(valid_player).to have_name("FAKE PLAYER")
     end
 
+    it "Players are initialized with a valid positiong of one" do
+      expect(valid_player).to be_valid
+
+      expect(valid_player).to have_position(1)
+    end
+  end
+
+  describe "Player validation" do
     it "isn't a valid player if its name is blank" do
-      expect(bad_player).not_to be_valid
-      expect(bad_player.errors[:name]).to eq(["can't be blank"])
+      expect(unnamed_player).to have_name("")
+
+      expect(unnamed_player).not_to be_valid
+      expect(unnamed_player.errors[:name]).to eq(["can't be blank"])
     end
 
     it "isn't a valid player if the name is nil" do
       expect(nil_player).to have_name(nil)
+
       expect(nil_player).not_to be_valid
       expect(nil_player.errors[:name]).to eq(["can't be blank"])
     end
+
+    it "Invalid if a player has a position that isn't an integer" do
+      expect(valid_player).to have_position(1)
+      expect(nil_player).not_to be_valid
+
+      valid_player.position = 0.5
+
+      expect(valid_player).not_to be_valid
+      expect(valid_player.errors[:position]).to eq(["must be an integer"])
+    end
   end
+  
 
   describe "movement" do    
     it "can move forward by a number of positions" do
@@ -59,7 +83,7 @@ RSpec.describe Player do
     # This takes a super long time :(
       # it "returns a message that says 'we done'" do
       #   big_guy = BigDependency.new
-      #   expect(player1.perform(big_guy)).to eq('we done')
+      #   expect(valid_player.perform(big_guy)).to eq('we done')
       # end
 
     it "returns a message that says 'we done' using a fake" do
@@ -70,19 +94,19 @@ RSpec.describe Player do
       end
 
       fake_big_guy = FakeBigDependency.new
-      expect(player1.perform(fake_big_guy)).to eq('we done')
+      expect(valid_player.perform(fake_big_guy)).to eq('we done')
     end
 
     it "returns a message that says 'we done' using a stub" do
       big_dependency = BigDependency.new
       allow(big_dependency).to receive(:execute).and_return("i'm tired")
-      expect(player1.perform(big_dependency)).to eq('we done')
+      expect(valid_player.perform(big_dependency)).to eq('we done')
     end
 
     it "returns a message that says 'we done' using a mock" do
       mock_big_dependency = double(BigDependency)
       expect(mock_big_dependency).to receive(:execute).once
-      expect(player1.perform(mock_big_dependency)).to eq('we done')
+      expect(valid_player.perform(mock_big_dependency)).to eq('we done')
     end
   end
 
