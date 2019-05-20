@@ -19,6 +19,11 @@ class Game < ApplicationRecord
     players.first
   end
 
+  def perform(big_dependency)
+    big_dependency.execute
+    return "Game over man! Game over."
+  end
+
   def update_position_for(current_player)
     space = spaces[current_player.read_attribute(:position) - 1]
 
