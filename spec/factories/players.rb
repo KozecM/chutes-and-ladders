@@ -4,7 +4,7 @@ FactoryBot.define do
     position { 1 }
   end
 
-  factory :unnamed_player, class: Player do
+  factory :nameless_player, class: Player do
     name { "" }
     position { 1 }
   end

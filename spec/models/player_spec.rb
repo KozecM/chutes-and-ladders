@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Player do
   let(:valid_player) { FactoryBot.build_stubbed(:player) }
-  let(:unnamed_player) { FactoryBot.build_stubbed(:unnamed_player) }
+  let(:nameless_player) { FactoryBot.build_stubbed(:nameless_player) }
   let(:nil_player) { FactoryBot.build_stubbed(:nil_player) }
   let(:moves_around) { FactoryBot.create(:player, position: 5) }
   let(:starts_at_fifth) { FactoryBot.build_stubbed(:starts_at_fifth_position) }
@@ -23,10 +23,10 @@ RSpec.describe Player do
 
   describe "Player validation" do
     it "isn't a valid player if its name is blank" do
-      expect(unnamed_player).to have_name("")
+      expect(nameless_player).to have_name("")
 
-      expect(unnamed_player).not_to be_valid
-      expect(unnamed_player.errors[:name]).to eq(["can't be blank"])
+      expect(nameless_player).not_to be_valid
+      expect(nameless_player.errors[:name]).to eq(["can't be blank"])
     end
 
     it "isn't a valid player if the name is nil" do
