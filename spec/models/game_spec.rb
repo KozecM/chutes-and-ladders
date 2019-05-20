@@ -15,9 +15,12 @@ RSpec.describe Game do
     it "can roll the die and set a players position" do
       game.players << Player.new(name: "FAKE PLAYER ONE")
       game.players << Player.new(name: "FAKE PLAYER TWO")
-      game.spaces = GamesHelper::generate_spaces 
+
+      game.spaces = GamesHelper::generate_spaces
+
       game.get_current_player.set_position(1)
       game.roll(game.players)
+
       expect(game.players[0].read_attribute(:position)).to_not eq(1)
     end
 
