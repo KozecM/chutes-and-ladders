@@ -26,4 +26,8 @@ class GamesController < ApplicationController
       
   end
 
+  def add_player
+    @player 
+  end
+
 end
