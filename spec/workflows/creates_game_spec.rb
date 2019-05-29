@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe CreatesGame do
+  let(:valid_player) { FactoryBot.build_stubbed(:player) }
   describe "initialization" do
     let(:creator) { CreatesGame.new(name: "GOOD GAME") }
 
@@ -25,6 +26,15 @@ RSpec.describe CreatesGame do
       bad_creator = CreatesGame.new(name: "")
       bad_creator.create
       expect(bad_creator.game.errors.messages[:name][0]).to match("can't be blank")
+    end
+  end
+
+  describe "add players to game" do
+    let(:creator) { CreatesGame.new(name: "GOOD GAME") }
+    it "adds player to game" do
+      creator.build
+      creator.game.players << valid_player
+      expect(creator.game.players.size).to eq(1)
     end
   end
   
