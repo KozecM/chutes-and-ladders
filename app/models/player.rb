@@ -1,6 +1,7 @@
 class Player < ApplicationRecord
   validates :name, presence: true, allow_blank: false
   validates :position, presence:true, numericality: { only_integer: true }
+  belongs_to :games, optional: true
 
   def move(roll)
     new_position = calculate_position(roll)
