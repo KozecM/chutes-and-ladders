@@ -6,6 +6,9 @@ RSpec.describe "starting a new game", type: :system do
     fill_in "Name", with: "World Championships 2019"
     click_on("Create Game")
     expect(page).to have_content("World Championships 2019")
+    (1..100).each do |i|
+      expect(page).to have_content(i)
+    end
   end
 
   it "won't without a name for the game" do
