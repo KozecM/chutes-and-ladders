@@ -11,6 +11,16 @@ RSpec.describe "starting a new game", type: :system do
     end
   end
 
+  it "allows a user to select a game and be linked to the right page" do
+    visit new_game_path
+    fill_in "Name", with: "BAD BOI"
+    click_on("Create Game")
+    visit games_path
+    click_on("BAD BOI")
+    expect(page).to have_content("Game Display")
+    expect(page).to have_content("Game Name: BAD BOI")
+  end
+
   it "won't without a name for the game" do
     visit new_game_path
     fill_in "Name", with: ""
