@@ -12,7 +12,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @workflow = CreatesPlayer.new(name: params[:player][:name])
+    @workflow = CreatesPlayer.new(name: params[:player][:name],game_id: params[:player][:game_id])
     @workflow.create
     redirect_to players_path
   end

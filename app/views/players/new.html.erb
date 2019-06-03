@@ -2,5 +2,8 @@
 <%= form_for(@player) do |p| %>
   <%= p.label(:name) %>
   <%= p.text_field(:name) %>
+  <%= p.label(:game_id)%>
+  <%= p.number_field(:game_id)%>
+
   <%= p.submit %>
 <% end %>
