@@ -109,5 +109,4 @@ module GamesHelper
     end
     spaces
   end
-  
 end

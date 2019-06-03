@@ -1,6 +1,6 @@
 <h1>Game Display</h1>
 <br />
-<h2>Game Name: <%= @game.name %></h2>
+
 <p>
 Players:
 <% @game.players.each do |player| %> 
@@ -10,3 +10,36 @@ Players:
 <br>
 <%= link_to '<button type="button">Add a playert</button>'.html_safe, new_player_path %>
 
+<h3>Game Name: <%= @game.name %></h3>
+
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <%(0..8).each do%>
+      <td>_________ </td>
+      <%end%>
+      <td>_________</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 1%>
+    <% @game.spaces.each do |space| %>
+      <% spaces_after = i < 10 ? 6 : i < 100 ? 5 : 4%>
+      <% if space.space_type != "empty" %>
+        <% spaces_after_dest = space.destination >= 10 ? 3 : 4%>
+      <%else%>
+        <% spaces_after_dest = 3%>
+      <% end %>
+      <td><pre><%= "|"%><%= i%><%=" "*spaces_after%><%="|"%><br /></pre> 
+             <pre><%="|  "%><%= space.space_type == "empty" ? "  " : space.destination%><%= " " * spaces_after_dest%><%="|"%><br /></pre>
+             <pre><%="|       |"%><br /><%="`````````" %></pre>
+      </td>    
+      <% if i%10 == 0 %>
+        <tr>
+      <% end %>
+      <% i+= 1%>
+    <%end%>
+  </tbody>
+</table>

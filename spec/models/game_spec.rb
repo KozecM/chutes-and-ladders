@@ -45,44 +45,5 @@ RSpec.describe Game do
       expect(valid_game.get_current_player.position).to eq(26)
     end
   end
-
-  describe "Using a big dependency" do
-    # it "dependency returns 'Game over man! Game over.'" do
-    #   big_boi = BigDependency.new
-    #   expect(game.perform(big_boi)).to eq("Game over man! Game over.")
-    # end
-
-    it "with a fake" do
-      fake_big_guy = FakeBigDependency.new
-
-      expect(valid_game.perform(fake_big_guy)).to eq('Game over man! Game over.')
-    end
-
-    it "with a stub" do
-      big_guy = BigDependency.new
-
-      allow(big_guy).to receive(:execute).and_return('Zzzzzz')
-      expect(big_guy.execute).to eq('Zzzzzz') 
-
-      expect(valid_game.perform(big_guy)).to eq('Game over man! Game over.')
-    end
-
-    it "with a mock using only a double" do
-      mock_big_guy = instance_double(BigDependency)
-
-      expect(mock_big_guy).to receive(:execute).once
-
-      expect(valid_game.perform(mock_big_guy)).to eq('Game over man! Game over.')
-    end
-
-    it "with a mock using an instance double" do
-      mock_big_guy = instance_double(BigDependency)
-
-      expect(mock_big_guy).to receive(:execute).once
-
-      expect(valid_game.perform(mock_big_guy)).to eq('Game over man! Game over.')
-    end
-    
-  end
   
 end
