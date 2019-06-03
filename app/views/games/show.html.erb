@@ -1,6 +1,12 @@
 <h1>Game Display</h1>
 <br />
-<h3>Game Name: <%= @game.name %></h3>
-
+<h2>Game Name: <%= @game.name %></h2>
+<p>
+Players:
+<% @game.players.each do |player| %> 
+<%= player.name %>
+<%end%>
+</p>
+<br>
 <%= link_to '<button type="button">Add a playert</button>'.html_safe, new_player_path %>
 
