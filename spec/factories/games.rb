@@ -11,4 +11,8 @@ FactoryBot.define do
     name { nil }
   end
 
+  factory :game_1_player, class: Game do
+    name {"game with 1 player"}
+  end
+
 end
