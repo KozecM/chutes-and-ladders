@@ -32,8 +32,5 @@ class Game < ApplicationRecord
     end
   end
 
-  def add_player(player)
-    
-  end
 
 end

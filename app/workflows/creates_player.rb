@@ -18,7 +18,7 @@ class CreatesPlayer
 
   def create
     build
-    result = player.save!
+    result = player.save
     @success = result
   end
 

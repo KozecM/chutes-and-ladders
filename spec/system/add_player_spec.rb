@@ -26,4 +26,20 @@ RSpec.describe "adding a player", type: :system do
     visit players_path
     expect(page).to have_content("1")
   end
+
+  it"takes user to Players page upon success" do
+    visit new_player_path
+    fill_in "Name", with: "FakeName"
+    fill_in "Game", with: 2
+    click_on("Create Player")
+    expect(page).to have_content("Players")
+  end
+end
+
+RSpec.describe "adding a player fail", type: :system do
+  it"displays error when player has no name" do
+    visit new_player_path
+    click_on("Create Player")
+    expect(page).to have_content(`:name, ["can't be blank"]`)
+  end
 end
