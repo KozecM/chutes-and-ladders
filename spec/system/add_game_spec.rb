@@ -24,6 +24,7 @@ RSpec.describe "starting a new game", type: :system do
   it "allows a user to add player to game" do
      visit new_game_path
      fill_in "Name", with: "World Championships 2019"
+     click_on("Create Game")
      click_link("Add a player")
      expect(page).to have_content("Add Player")
   end
