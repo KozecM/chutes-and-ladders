@@ -14,4 +14,7 @@ RSpec.describe Dice do
 
   end
 
+  describe "setting the number of dice" do
+    dice = Dice.new
+  end
 end

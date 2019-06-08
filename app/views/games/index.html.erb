@@ -10,7 +10,6 @@
   <tbody>
     <% @games.each do |game| %>   
       <tr>
-        <td><%= game.name %></td>
         <td><%= link_to game.name, action: "show", id: game.id %></td>
         <%game.players.each do |player| %>
           <td><%= player.name + ','%></td>
