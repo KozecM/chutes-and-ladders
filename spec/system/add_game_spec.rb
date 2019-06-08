@@ -21,17 +21,21 @@ RSpec.describe "starting a new game", type: :system do
     expect(page).to have_content("Game Name: BAD BOI")
   end
 
-  it "won't without a name for the game" do
-    visit new_game_path
-    fill_in "Name", with: ""
-    click_on("Create Game")
-    expect(page).to have_content("can't be blank")
-  end
-
   it "allows a user to add player to game" do
      visit new_game_path
      fill_in "Name", with: "World Championships 2019"
      click_on("Create Game")
-     expect(page).to have_content("Add a player")
+     click_link("Add a player")
+     expect(page).to have_content("Add Player")
+  end
+
+  describe "fails", type: :system do
+    it "displays error when game has no name" do
+      visit new_game_path
+      click_on("Create Game")
+      expect(page).to have_content("can't be blank")
+    end
   end
 end
+
+

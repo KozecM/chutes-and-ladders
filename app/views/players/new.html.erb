@@ -7,3 +7,15 @@
 
   <%= p.submit %>
 <% end %>
+
+<%if @player.errors.any? %>
+  <div id="errors">
+    <h3>Player not created because:</h3>
+    <ul>
+      <% @player.errors.messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <h4>Please try again</h4>
+<% end %>

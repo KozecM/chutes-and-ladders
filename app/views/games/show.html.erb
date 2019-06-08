@@ -4,11 +4,11 @@
 <p>
 Players:
 <% @game.players.each do |player| %> 
-<%= player.name %>
+<%= player.name + ',' %>
 <%end%>
 </p>
 <br>
-<%= link_to '<button type="button">Add a playert</button>'.html_safe, new_player_path %>
+<%= link_to '<button id="Add_Player type="button">Add a player</button>'.html_safe, new_player_path %>
 
 <h3>Game Name: <%= @game.name %></h3>
 
@@ -25,7 +25,15 @@ Players:
   </thead>
   <tbody>
     <% i = 1%>
+    <% playerids = []%>
     <% @game.spaces.each do |space| %>
+      <% @game.players.each do |player|%>
+        <%playerids = []%>
+        <% if player.position == i%>
+          <% playerids<< player.id%>
+        <%end%>
+      <%end%>
+
       <% spaces_after = i < 10 ? 6 : i < 100 ? 5 : 4%>
       <% if space.space_type != "empty" %>
         <% spaces_after_dest = space.destination >= 10 ? 3 : 4%>
@@ -34,6 +42,7 @@ Players:
       <% end %>
       <td><pre><%= "|"%><%= i%><%=" "*spaces_after%><%="|"%><br /></pre> 
              <pre><%="|  "%><%= space.space_type == "empty" ? "  " : space.destination%><%= " " * spaces_after_dest%><%="|"%><br /></pre>
+             |<%playerids.each do |id|%><%=id%><pre><%=" " * (7-playerids.size)%>|</pre><%end%>
              <pre><%="|       |"%><br /><%="`````````" %></pre>
       </td>    
       <% if i%10 == 0 %>
