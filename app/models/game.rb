@@ -8,6 +8,7 @@ class Game < ApplicationRecord
     current_player = get_current_player
     current_player.move(dice.roll)
     update_position_for(current_player)
+    winner = game_winner(current_player)
     change_turn(players)
   end
 
@@ -29,6 +30,12 @@ class Game < ApplicationRecord
 
     if space.destination
       current_player.position = space.destination
+    end
+  end
+
+  def game_winner(current_player)
+    if current_player.position == 100
+      current_player
     end
   end
 
