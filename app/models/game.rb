@@ -4,9 +4,9 @@ class Game < ApplicationRecord
   has_many :spaces
   validates :name, presence: true, allow_blank: false
 
-  def roll(players)
+  def roll(players, dice)
     current_player = get_current_player
-    current_player.move(Dice::roll)
+    current_player.move(dice.roll)
     update_position_for(current_player)
     change_turn(players)
   end

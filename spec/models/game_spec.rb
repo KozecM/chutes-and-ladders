@@ -4,6 +4,7 @@ RSpec.describe Game do
   let(:valid_game) { FactoryBot.build_stubbed(:game) }
   let(:nameless_game) { FactoryBot.build_stubbed(:nameless_game) }
   let(:nil_game) { FactoryBot.build_stubbed(:nil_game) }
+  let(:dice) { Dice.new() }
 
   describe "Initialized Games are valid with name" do
     it "Creates a game with a name" do
@@ -30,7 +31,7 @@ RSpec.describe Game do
       valid_game.spaces = GamesHelper::generate_spaces
 
       valid_game.get_current_player.set_position(1)
-      valid_game.roll(valid_game.players)
+      valid_game.roll(valid_game.players,dice)
 
       expect(valid_game.players[0].read_attribute(:position)).to_not eq(1)
     end
