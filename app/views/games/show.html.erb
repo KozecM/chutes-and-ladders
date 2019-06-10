@@ -42,7 +42,7 @@ Players:
       <% end %>
       <td><pre><%= "|"%><%= i%><%=" "*spaces_after%><%="|"%><br /></pre> 
              <pre><%="|  "%><%= space.space_type == "empty" ? "  " : space.destination%><%= " " * spaces_after_dest%><%="|"%><br /></pre>
-             |<%playerids.each do |id|%><%=id%><pre><%=" " * (7-playerids.size)%>|</pre><%end%>
+             <pre>|<%playerids.each do |id|%><%=id%><%end%><%=" " * (7-playerids.size)%>|</pre>
              <pre><%="|       |"%><br /><%="`````````" %></pre>
       </td>    
       <% if i%10 == 0 %>
