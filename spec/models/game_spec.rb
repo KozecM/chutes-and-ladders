@@ -4,12 +4,9 @@ RSpec.describe Game do
   let(:valid_game) { FactoryBot.build_stubbed(:game) }
   let(:nameless_game) { FactoryBot.build_stubbed(:nameless_game) }
   let(:nil_game) { FactoryBot.build_stubbed(:nil_game) }
-<<<<<<< HEAD
   let(:dice) { Dice.new() }
-=======
   let(:player1) {Player.new(name: "FAKE PLAYER ONE")}
   let(:player2) {Player.new(name: "FAKE PLAYER TWO")}
->>>>>>> 1e7948b356e231e94559524823ba9699c0c0d19d
 
   describe "Initialized Games are valid with name" do
     it "Creates a game with a name" do
