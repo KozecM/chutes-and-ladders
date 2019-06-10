@@ -2,10 +2,10 @@ class Space < ApplicationRecord
   validates :space_type, presence: true, allow_blank: false
   validates :destination, allow_nil: true, numericality: { only_integer: true }
 
-  # def initialization
-  #   self.check_type
-  #   self.check_destination
-  # end
+  def initialization
+    self.check_type
+    self.check_destination
+  end
 
   def check_type
     valid_values = ["empty", "chute", "ladder"]
