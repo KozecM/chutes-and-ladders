@@ -13,7 +13,7 @@
       <tr>
         <td><%= player.name %></td>
         <td><%= player.position %></td>
-        <td><%= player.game_id %></td>
+        <td><a href="games/<%=player.game_id %>" id="<%=player.game_id%>"><%=player.game_id%></td>
       </tr>
     <% end %>
   </tbody>

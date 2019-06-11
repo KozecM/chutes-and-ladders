@@ -29,6 +29,18 @@ RSpec.describe "starting a new game", type: :system do
      expect(page).to have_content("Add Player")
   end
 
+  it "allows a user to roll the dice" do
+     visit new_game_path
+     fill_in "Name", with: "World Championships 2019"
+     click_on("Create Game")
+     click_link("Add a player")
+     fill_in "Name", with: "FakeName"
+     fill_in "Game", with: 2
+     visit games_path
+     click_on("World Championships 2019")
+     expect(page).to have_content("roll dice")
+  end
+
   describe "fails", type: :system do
     it "displays error when game has no name" do
       visit new_game_path

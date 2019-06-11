@@ -1,18 +1,53 @@
+
 <h1>Game Display</h1>
 <br />
-
+<h3>Game Name: <%= @game.name %></h3>
 <p>
-Players:
-<% @game.players.each do |player| %> 
-<%= player.name + ',' %>
-<%end%>
+Players: 
+<br/>
+<table>
+  <thead>
+    <tr>
+      <td>
+        Name
+      </td>
+      <td>
+        ID
+      </td>
+      <td>
+        Position
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @game.players.each do |player| %> 
+  <tr>
+    <td>
+      <%=player.name %>
+    </td>
+    <td>
+      <%=player.id%>
+    </td>
+    <td>
+      <%=player.position%>
+    </td>
+  </tr>
+  <%end%>
+  <tr>
+    <td>
+      <button id='take turn' type='button' onClick="@game.roll(Dice.new(), @game.players)">roll dice</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
 </p>
 <br>
 <%= link_to '<button id="Add_Player type="button">Add a player</button>'.html_safe, new_player_path %>
 
-<h3>Game Name: <%= @game.name %></h3>
 
-<br />
+
+
 
 <table>
   <thead>
@@ -30,7 +65,7 @@ Players:
       <% @game.players.each do |player|%>
         <%playerids = []%>
         <% if player.position == i%>
-          <% playerids<< player.id%>
+          <% playerids << player.id%>
         <%end%>
       <%end%>
 
